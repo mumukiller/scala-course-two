@@ -1,0 +1,22 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# Home page
+GET     /                           controllers.Application.index
+GET     /tweets                     controllers.TweetController.paged(offset: Int, length: Int)
+GET     /tweets/similar/:id         controllers.TweetController.getSimilarTweets(id: Long, count: Int)
+GET     /tweets/:id                 controllers.TweetController.get(id: Long)
+POST    /tweets/                    controllers.TweetController.create
+PUT     /tweets/:id                 controllers.TweetController.update(id: Long)
+DELETE  /tweets/:id                 controllers.TweetController.delete(id: Long)
+
+GET     /tasks/:id                    controllers.TasksController.get(id: java.util.UUID)
+POST    /tasks/                       controllers.TasksController.create
+GET     /tasks/tweets/preload         controllers.TasksController.preloadTweets
+GET     /tasks/tweets/preloadGarbage  controllers.TasksController.preloadSomeGarbageTweets
+
+# Map static resources from the /public folder to the /assets URL path
+GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
+    
